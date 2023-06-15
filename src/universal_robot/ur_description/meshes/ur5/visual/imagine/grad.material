@@ -1,0 +1,14 @@
+material my_material
+{
+  receive_shadows on
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture bitmapp.png
+      }
+    }
+  }
+}
