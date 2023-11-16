@@ -1052,7 +1052,7 @@
             <updateRate>0.0</updateRate>
             <cameraName>camera_ir</cameraName>
             <imageTopicName>/camera/color/image_raw1</imageTopicName>
-            <cameraInfoTopicName>/camera/color/camera_info</cameraInfoTopicName>
+            <cameraInfoTopicName>/camera/color/camera_info1</cameraInfoTopicName>
             <depthImageTopicName>/camera/depth/image_raw1</depthImageTopicName>
             <depthImageCameraInfoTopicName>/camera/depth/camera_info</depthImageCameraInfoTopicName>
             <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>
@@ -1130,7 +1130,7 @@
             <updateRate>0.0</updateRate>
             <cameraName>camera_ir</cameraName>
             <imageTopicName>/camera/color/image_raw2</imageTopicName>
-            <cameraInfoTopicName>/camera/color/camera_info</cameraInfoTopicName>
+            <cameraInfoTopicName>/camera/color/camera_info2</cameraInfoTopicName>
             <depthImageTopicName>/camera/depth/image_raw2</depthImageTopicName>
             <depthImageCameraInfoTopicName>/camera/depth/camera_info</depthImageCameraInfoTopicName>
             <pointCloudTopicName>/camera/depth/points</pointCloudTopicName>

@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "vision")
 set(vision_VERSION "0.0.0")
-set(vision_MAINTAINER "ko <okevin591@gmail.com>")
+set(vision_MAINTAINER "ko <ko@todo.todo>")
 set(vision_PACKAGE_FORMAT "2")
 set(vision_BUILD_DEPENDS "geometry_msgs" "roscpp" "rospy" "sensor_msgs" "std_msgs")
 set(vision_BUILD_EXPORT_DEPENDS "geometry_msgs" "roscpp" "rospy" "sensor_msgs" "std_msgs")
