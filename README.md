@@ -1,7 +1,7 @@
 The project focuses on visual tracking of the UR5 using deep learning techniques. Three neural network models based on ResNet50 are evaluated. The database is obtained through ROS (Robot Operating System). This database comprises a total of 1170 records, each consisting of images captured by three different cameras.
 
 
-#Proposed System
+# Proposed System
 
 ![Proposed System](figuras/sistema_propuestoa.svg)
 
@@ -11,13 +11,13 @@ Subsequently, these processed images are fed through a ResNet50 neural network a
 
 Together, this system offers a comprehensive solution for the monitoring and control of the UR5 robotic arm, using labeled images and a powerful neural network to achieve precise estimation of its position and orientation.
 
-#Fully Connected Block, 1000-256-64-16-3
+# Fully Connected Block, 1000-256-64-16-3
 
 ![Fully Connected](figuras/cnn1.svg)
 
 The fully connected architecture is the one preceding this, which consequently concatenates the weights and adds them to the last hidden layer. In this figure, you can observe how the configuration works to ultimately obtain the pose vector.
 
-#Simulation structure
+# Simulation structure
 
 <div align="center">
   <img src="figuras/ec.png" alt="Simulation structure" style="border: 1px solid black; margin: 5px;">
@@ -28,7 +28,7 @@ The fully connected architecture is the one preceding this, which consequently c
 
 It's worth noting that the simulation framework enables the acquisition of images from different perspectives, aimed at gathering information from various positions. This data collection capability allows for the creation of a fully structured database, which will be used subsequently to train a model.
 
-#Structured database.
+# Structured database.
 
 The database comprises images, timestamps, pose information, and an identification number. These are the essential data required for the implementation of the cascaded neural network model.
 
@@ -40,18 +40,18 @@ Please refer to the structured database table.
 | $i$     | $t_{i}$   | Img1${i}$ | Img2${i}$ | Img3${i}$ | $[x, y, z]_{i}$ | $[ψ, θ, φ]_{i}$ | $[q1..q6]_{i}$ |
 |         | $\vdots$  |      |      |      |                     |                        |                  |
 
-#Complete cascade architecture
+# Complete cascade architecture
 
 
 Given that we experimented with three models, the best results were achieved with the full cascade architecture. The structures of these models are as follows:
 
-##Casacade
+## Casacade
 The cascade simply gathers information from previous estimates.
 
-##Cascade Complete
+## Cascade Complete
 The complete cascade gathers previous information and concatenates it for subsequent estimation.
 
-##Full Conneted Structure
+## Full Conneted Structure
 Interprets the features and makes final predictions.
 
 - **Input:** 1000 element feature vector.
@@ -60,7 +60,7 @@ Interprets the features and makes final predictions.
 This is what is observed in the image.
 ![Fully Connectedar](figuras/est_full.svg)
 
-#Results
+# Results
 
 The results of this project showed a mean squared error (MSE) of approximately (0.02m)^2 as a measure of accuracy. MSE is a commonly used criterion to assess the quality of estimates in regression problems, where it quantifies the squared difference between estimated values and true values. In this case, an MSE of (0.02m)^2 indicates that, on average, the estimates deviated by this squared amount.
 
@@ -69,46 +69,62 @@ The results of this project showed a mean squared error (MSE) of approximately (
   <img src="figuras/grafic3d.svg" alt="result" style="margin: 5px;">
 </div>
 
-#Repository Structure and Contents.
-## Repositorio: "Pose Estimation of Robot End-Effector using a CNN-Based Cascade Estimator"
+# Repository Structure and Contents.
+## Repository: "Pose Estimation of Robot End-Effector using a CNN-Based Cascade Estimator"
 
-## 1. Clonación del Repositorio
+## 1. Cloning the Repository
 
-Para clonar el repositorio, ejecuta el siguiente comando en tu terminal:
+To clone the repository, it is necessary to have a pre-configured workspace. This will be explained later, and you can execute the following command in the terminal once everything is set up:
 
 ```bash
-git clone https://github.com/nombre_usuario/nombre_repositorio.git 
+git clone https://github.com/kevin-ortega2724/Repositorio_ROS.git 
 ```
 
 
 
+## Paso 2: Installing ROS Noetic
+### Follow the instructions on the official ROS page: http://wiki.ros.org/noetic/Installation
 
-## Paso 2: Instalación de ROS Noetic
-### Sigue las instrucciones en la página oficial de ROS: http://wiki.ros.org/noetic/Installation
-
-## Paso 3: Creación de un Espacio de Trabajo de ROS
+## Paso 3: Creating a ROS Workspace
+```bash
 mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/
 catkin_make
 source devel/setup.bash
+```
 
-## Paso 4: Instalación de Dependencias
+## Paso 4: Installing Dependencies
+```bash
 cd ~/catkin_ws/src
 git clone https://github.com/nombre_usuario/otro_repositorio.git
 rosdep install --from-paths . --ignore-src -r -y
+```
 
-## Paso 5: Compilación del Código
+## Paso 5: Compiling the Code
+```bash
 cd ~/catkin_ws/
 catkin_make
 source devel/setup.bash
+```
 
-## Paso 6: Configuración de ROS
+## Paso 6: Configuring ROS
+```bash
 source ~/catkin_ws/devel/setup.bash
+```
 
-## Paso 7: Ejecución del Código
-roslaunch nombre_paquete nombre_archivo.launch
+## Paso 7: Running the Code
+```bash
+https://github.com/kevin-ortega2724/Repositorio_ROS.git
+```
 
-##Como citar este documento.
+## Image Capture and Trajectory Execution Files
+
+Within this repository, specific folders contain Python code implementations designed for data capture and the execution of various trajectories. The files with the extension .py located in the path src/vision/DH constitute fundamental scripts for performing specific movements, data acquisition, and generating various trajectories.
+
+Additionally, in the folder named "Data," you will find both depth and color images. In this same directory, you will have access to execution files for Resnet50, as well as some scripts designed for result comparison. These resources are designed to facilitate data collection and provide useful analysis tools for your project.ntas de análisis útiles para su proyecto.
+ 
+ ## Citing this Document 
+```bash
 @INPROCEEDINGS{10333441,
   author={Ortega, Kevin D. and Sepúlveda, Jorge I. and Hernandez, Byron and Holguín, German A. and Medeiros, Henry},
   booktitle={2023 IEEE 6th Colombian Conference on Automatic Control (CCAC)}, 
@@ -118,3 +134,4 @@ roslaunch nombre_paquete nombre_archivo.launch
   number={},
   pages={1-6},
   doi={10.1109/CCAC58200.2023.10333441}}
+  ```
